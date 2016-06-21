@@ -24,7 +24,7 @@ import java.util.Locale;
 public class Vehicleticketing extends Fragment implements ImageButton.OnClickListener, AdapterView.OnItemSelectedListener {
     private static final String TAG = "VehicleTicket";
     Button c;
-    EditText msg , emailet, phone , from, to,name;
+    EditText msg , emailet, phone , from, to,name,customMsg;
     Spinner spinner;
 
     private String mParam1;
@@ -62,6 +62,7 @@ public class Vehicleticketing extends Fragment implements ImageButton.OnClickLis
         from = (EditText) view.findViewById(R.id.from);
         to = (EditText) view.findViewById(R.id.dest);
         name = (EditText) view.findViewById(R.id.nme);
+        customMsg = (EditText) view.findViewById(R.id.customMsg);
         dates = (ImageButton) view.findViewById(R.id.imgbtncal);
         dates.setOnClickListener(this);
 
@@ -84,15 +85,16 @@ public class Vehicleticketing extends Fragment implements ImageButton.OnClickLis
         String fd = from.getText().toString();
         String td = to.getText().toString();
         String nm = name.getText().toString();
+        String customMessage = customMsg.getText().toString();
 
         String valueFromSpinner = spinner.getSelectedItem().toString();
         int day = dd;
         int month = mm;
         int year = yy;
         Log.d(TAG, "onClick: "+message+">>"+valueFromSpinner+">>"+day+">>"+">>"+month+">>"+year);
-        sendEmail(message,valueFromSpinner,day,month,year,email,ph,fd,td,nm);
+        sendEmail(message,valueFromSpinner,day,month,year,email,ph,fd,td,nm,customMessage);
     }
-    public void sendEmail(String extraMsg, String mValueFromSpinner, int day, int month, int year , String emailet, String ph, String fd , String td,String nm) {
+    public void sendEmail(String extraMsg, String mValueFromSpinner, int day, int month, int year , String emailet, String ph, String fd , String td,String nm, String customMessage) {
 
         /*String[] to = new String[]{"stc2065@gmail.com"};
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
@@ -115,7 +117,7 @@ public class Vehicleticketing extends Fragment implements ImageButton.OnClickLis
                             + "Phone no:" + ph
                             + "from destination:" + fd
                             + "To Destination" + td
-                     + "Message :"+extraMsg,
+                     + "Message :"+customMessage,
                     "aegeus11@gmail.com",
                     "stc2065@gmail.com");
         } catch (Exception e) {

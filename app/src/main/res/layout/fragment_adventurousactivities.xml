@@ -169,7 +169,7 @@
             android:id="@+id/textView8"
             android:textSize="20dp"
             android:textColor="#ffffff"
-            android:layout_above="@+id/msg"
+            android:layout_above="@+id/customMsg"
             android:layout_centerHorizontal="true" />
 
         <EditText
@@ -177,7 +177,7 @@
             android:layout_height="wrap_content"
             android:inputType="textMultiLine"
             android:ems="10"
-            android:id="@+id/msg"
+            android:id="@+id/customMsg"
             android:height="80dp"
             android:background="@android:drawable/editbox_background"
             android:layout_above="@+id/Conf"
@@ -193,7 +193,7 @@
             android:text="Confirm"
             android:id="@+id/Conf"
             android:textColor="#ffffff"
-            android:background="#06a034"
+            android:background="#8a4686"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true" />
 

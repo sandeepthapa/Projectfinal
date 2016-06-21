@@ -28,7 +28,7 @@ import java.util.Locale;
 public class Adventurousactivities extends Fragment implements ImageButton.OnClickListener, AdapterView.OnItemSelectedListener {
     private static final String TAG = "Tour";
     Button c;
-    EditText msg , emailet, phone ,name;
+    EditText msg , emailet, phone ,name,customMsg;
     Spinner spinner;
 
 
@@ -65,6 +65,7 @@ public class Adventurousactivities extends Fragment implements ImageButton.OnCli
         emailet = (EditText) view.findViewById(R.id.email);
         phone = (EditText) view.findViewById(R.id.num);
         name = (EditText) view.findViewById(R.id.nme);
+        customMsg = (EditText) view.findViewById(R.id.customMsg);
         dates = (ImageButton) view.findViewById(R.id.imgbtncal);
         dates.setOnClickListener(this);
 
@@ -93,16 +94,17 @@ public class Adventurousactivities extends Fragment implements ImageButton.OnCli
         String email = emailet.getText().toString();
         String ph = phone.getText().toString();
         String nm = name.getText().toString();
+        String customMessage = customMsg.getText().toString();
 
         String valueFromSpinner = spinner.getSelectedItem().toString();
         int day = dd;
         int month = mm;
         int year = yy;
         Log.d(TAG, "onClick: "+message+">>"+valueFromSpinner+">>"+day+">>"+">>"+month+">>"+year);
-        sendEmail(message,valueFromSpinner,day,month,year,email,ph,nm);
+        sendEmail(message,valueFromSpinner,day,month,year,email,ph,nm,customMessage );
 
     }
-    public void sendEmail(String extraMsg, String mValueFromSpinner, int day, int month, int year , String emailet, String ph, String nm) {
+    public void sendEmail(String extraMsg, String mValueFromSpinner, int day, int month, int year , String emailet, String ph, String nm,String customMessage) {
 
         /*String[] to = new String[]{"stc2065@gmail.com"};
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
@@ -123,9 +125,9 @@ public class Adventurousactivities extends Fragment implements ImageButton.OnCli
                             + "Name =" + nm
                               + "Email =" + emailet
                             +"Phone no:"+ph
-                            + "Message :"+extraMsg,
+                            + "Message :"+customMessage,
                     "aegeus11@gmail.com",
-                    "stc2065@gmail.com");
+                    "theanilpaudel@gmail.com");
         } catch (Exception e) {
             Log.e("SendMail", e.getMessage(), e);
         }

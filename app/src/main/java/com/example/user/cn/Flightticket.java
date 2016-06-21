@@ -25,7 +25,7 @@ import java.util.Locale;
 public class Flightticket extends Fragment implements ImageButton.OnClickListener, AdapterView.OnItemSelectedListener {
     private static final String TAG = "Flightticket";
     Button c;
-    EditText msg , emailet, phone , from, to,name;
+    EditText msg , emailet, phone , from, to,name,customMsg;
 
     private String mParam1;
     private String mParam2,mValueFromSpinner;
@@ -57,6 +57,7 @@ public class Flightticket extends Fragment implements ImageButton.OnClickListene
         c = (Button) view.findViewById(R.id.Conf);
         dates = (ImageButton) view.findViewById(R.id.imgbtncal);
         msg = (EditText) view.findViewById(R.id.nme);
+        customMsg = (EditText)view.findViewById(R.id.customMsg);
         emailet = (EditText) view.findViewById(R.id.email);
         phone = (EditText) view.findViewById(R.id.num);
         from = (EditText) view.findViewById(R.id.from);
@@ -94,16 +95,17 @@ public class Flightticket extends Fragment implements ImageButton.OnClickListene
         String fd = from.getText().toString();
         String td = to.getText().toString();
         String nm = name.getText().toString();
+        String customMessage = customMsg.getText().toString();
 
         String valueFromSpinner = spinner.getSelectedItem().toString();
         int day = dd;
         int month = mm;
         int year = yy;
         Log.d(TAG, "onClick: "+message+">>"+valueFromSpinner+">>"+day+">>"+">>"+month+">>"+year);
-        sendEmail(message,valueFromSpinner,day,month,year,email,ph,fd,td,nm);
+        sendEmail(message,valueFromSpinner,day,month,year,email,ph,fd,td,nm,customMessage);
     }
 
-    public void sendEmail(String extraMsg, String mValueFromSpinner, int day, int month, int year , String emailet, String ph, String fd , String td,String nm) {
+    public void sendEmail(String extraMsg, String mValueFromSpinner, int day, int month, int year, String emailet, String ph, String fd, String td, String nm, String customMessage) {
 
         /*String[] to = new String[]{"stc2065@gmail.com"};
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
@@ -117,7 +119,7 @@ public class Flightticket extends Fragment implements ImageButton.OnClickListene
 
 
             Log.d(TAG, "sendEmail: "+"Ticket Booked for "+mValueFromSpinner+" flight"+
-                    "Your ticket is booked for "+year+"/"+month+"/"+day+"/n"+extraMsg);
+                    "Your ticket is booked for "+year+"/"+month+"/"+day+"\n"+customMessage);
             GMailSender sender = new GMailSender("aegeus11@gmail.com", "lordsaveus2");
             sender.sendMail("Ticket Booked for "+mValueFromSpinner+" flight",
                     "Your ticket is booked for "+year+"/"+month+"/"+day+"\n"
@@ -126,9 +128,9 @@ public class Flightticket extends Fragment implements ImageButton.OnClickListene
                             +"Phone no:"+ph
                             +"from destination:"+fd
                             +"To Destination"+td
-                             +"Messaage :" +extraMsg,
+                            +"Messaage :" +customMessage,
                     "aegeus11@gmail.com",
-                    "theanilpaudel@gmail.com");
+                    "stc2065@gmail.com");
         } catch (Exception e) {
             Log.e("SendMail", e.getMessage(), e);
         }

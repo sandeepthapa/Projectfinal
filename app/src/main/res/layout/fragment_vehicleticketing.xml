@@ -180,7 +180,7 @@
             android:layout_height="wrap_content"
             android:inputType="textMultiLine"
             android:ems="10"
-            android:id="@+id/msg"
+            android:id="@+id/customMsg"
             android:height="80dp"
             android:background="@android:drawable/editbox_background"
             android:layout_marginTop="9dp"
@@ -274,7 +274,7 @@
             android:textColor="#ffffff"
             android:background="#06a034"
             android:layout_gravity="center_horizontal|bottom"
-            android:layout_below="@+id/msg"
+            android:layout_below="@+id/customMsg"
             android:layout_toRightOf="@+id/textView19"
             android:layout_toEndOf="@+id/textView19"
             android:layout_marginTop="14dp" />
