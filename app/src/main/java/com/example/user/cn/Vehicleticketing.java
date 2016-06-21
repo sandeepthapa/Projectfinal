@@ -42,7 +42,7 @@ public class Vehicleticketing extends Fragment implements ImageButton.OnClickLis
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
-        setDateTimeField();
+//        setDateTimeField();
     }
 
     @Override
@@ -64,7 +64,13 @@ public class Vehicleticketing extends Fragment implements ImageButton.OnClickLis
         name = (EditText) view.findViewById(R.id.nme);
         customMsg = (EditText) view.findViewById(R.id.customMsg);
         dates = (ImageButton) view.findViewById(R.id.imgbtncal);
-        dates.setOnClickListener(this);
+        dates.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDatePickerDialog = new DatePickerDialog(getActivity(), mDateSetListener, 2016, 05, 16);
+                mDatePickerDialog.show();
+            }
+        });
 
         txtdate = (TextView) view.findViewById(R.id.txtappdate);
         txtdate.setInputType(InputType.TYPE_NULL);
